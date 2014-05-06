@@ -41,7 +41,6 @@ Route::group(array('prefix' => '/location'), function()
 	Route::get('/edit/{location}', 'LocationController@edit');
 	Route::get('/delete/{location}', 'LocationController@delete');
 	Route::get('/showmap/{location}', 'LocationController@showMap');
-	
 	Route::post('/create', 'LocationController@handleCreate');
 	Route::post('/edit', 'LocationController@handleEdit');
 	Route::post('/delete', 'LocationController@handleDelete');
@@ -92,3 +91,22 @@ Route::group(array('before' => 'auth'), function()
 {
   Route::get('logout', array('as' => 'logout', 'uses' => 'UsersController@logout'));
 });
+
+
+// ===============================================
+// RMI SECTION =================================
+// 
+// ===============================================
+// ===============================================
+Route::group(array('prefix' => '/rmi'), function()
+{
+
+  Route::get('/','RMIController@imageGallery');
+  Route::get('/upload','RMIController@upload');
+  Route::post('/handleupload','RMIController@handleUploadRMI');
+  Route::get('/showlist', 'RMIController@showList');
+  Route::post('/', 'RMIController@handleCreate');
+ 
+  
+});
+
